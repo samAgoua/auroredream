@@ -1,0 +1,44 @@
+{% extends "layout/base.html" %}
+{% load unicorn %}
+
+{% block content %}
+<section class="module bg-dark-60 gallery-page-header parallax-bg" data-background="assets/images/gallery_bg.jpg">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-2">
+          <h2 class="module-title font-alt">Gallery - {{ evenement.titre }}</h2>
+          <div class="module-subtitle font-serif">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</div>
+        </div>
+        <div class="col-sm-4">
+            <img width="200" height="200" src="{{ MEDIA_URL }}{{ evenement.code_qr.img.url }}" alt="QR Code" />
+            <br>
+            {% unicorn 'addform' evenement.numero_uuid %}
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="module">
+    <div class="container">
+      <div class="row multi-columns-row">
+          
+        {% for contenu in contenus %}
+        <div class="col-sm-6 col-md-3 col-lg-3">
+
+          <div class="gallery-item">
+            <div class="gallery-image"><a class="gallery" href="{{MEDIA_URL}}{{contenu.fichier.url}}" title="{{contenu.description}}"><img src="{{MEDIA_URL}}{{contenu.fichier.url}}" alt="Gallery Image 4"/>
+                <div class="gallery-caption">
+                  <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
+                </div></a></div>
+          </div>
+
+        </div>
+        {% empty %}
+        <div class="col-sm-12 center">
+          <p>Aucun contenu trouvé</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+{% endblock %}  

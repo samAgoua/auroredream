@@ -1,0 +1,57 @@
+{% extends "layout/base.html" %}
+
+
+{% block content %}
+
+<section class="module bg-dark-30" data-background="assets/images/section-4.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <h1 class="module-title font-alt mb-0">Profil de l'utilisateur</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="module row">
+  <div class="container col-lg-4">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <h4 class="font-alt">Informations de l'utilisateur</h4>
+            <hr class="divider-w mb-10">
+            <p><strong>Nom d'utilisateur:</strong> {{ user.username }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <form method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button class="btn btn-round btn-b">Déconnexion</button>
+            </form>
+            <a href="{% url 'evenement_create' %}" class="btn btn-round btn-b" style="margin-top: 10px;">Créer un événement</a>
+        </div>
+    </div>
+</div>
+    <div class="container col-lg-8">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <h2 class="module-title font-alt">Projets {{events.count}} </h2>
+        </div>
+      </div>
+      <ul class="works-grid works-grid-gut works-grid-3 works-hover-w" id="works-grid" style="position: relative; height: 194.203px;">
+        
+
+          {% for event in events %}
+            <li class="work-item illustration webdesign" style="position: absolute; left: 0px; top: 0px;">
+              <a href="{% url 'dashboard' event.id %}">
+                <div class="work-image"><img src="{{MEDIA_URL}}{{ event.cover.url }}" alt="Portfolio Item"></div>
+                <div class="work-caption font-alt">
+                  <h3 class="work-title">{{event.titre}}</h3>
+                  <div class="work-descr">{{event.description}}</div>
+                </div></a>
+              </li>
+          {% endfor %}
+
+      </ul>
+    </div>
+  </section>
+
+{% endblock content %}  

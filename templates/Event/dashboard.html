@@ -1,0 +1,73 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+<section class="module bg-dark-60" data-background="{{MEDIA_URL}}{{ evenement.cover.url }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <h1 class="module-title font-alt mb-0">{{ evenement.titre }}</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="module">
+    <div class="container">
+        <div role="tabpanel">
+            <ul class="nav nav-tabs font-alt" role="tablist">
+              <li class="active"><a href="#generale" data-toggle="tab" aria-expanded="true"><span class="icon-tools-2"></span>générale</a></li>
+              <li class=""><a href="#contentsharing" data-toggle="tab" aria-expanded="false"><span class="icon-tools-2"></span>paratage de contenu</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="generale">
+                
+
+                    {% comment %} Section Services disponible {% endcomment %}
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3">
+                          <h2 class="module-title font-alt"></h2>
+                          <div class="module-subtitle font-serif"></div>
+                        </div>
+                      </div>
+                      <div class="row multi-columns-row">
+                        
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                          <div class="features-item">
+                            <div class="features-icon"><span class="icon-tools"></span></div>
+                            <h3 class="features-title font-alt">Designs &amp; interfaces</h3>
+                            <p>Careful attention to detail and clean, well structured code ensures a smooth.</p>
+                            <button class="btn btn-d btn-circle" type="submit"><i class="fa fa-check"></i> ajouté</button>
+                        </div>
+                        </div>
+                       
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                          <div class="features-item">
+                            <div class="features-icon"><span class="icon-mobile"></span></div>
+                            <h3 class="features-title font-alt">Partage de contenu</h3>
+                            <p>Partagez des images et videos avec vos amis et votre famille, vos collègues et vos clients</p>
+                            <button class="btn btn-border-d btn-circle" type="submit"><i class="fa fa-plus"></i> Ajouter </button>
+                          </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                          <div class="features-item">
+                            <div class="features-icon"><span class="icon-lifesaver"></span></div>
+                            <h3 class="features-title font-alt">Boutique</h3>
+                            <p>Vous pouvez acheter des accesoires dans notre boutique en ligne</p>
+                            <button class="btn btn-border-d btn-circle" type="submit"><i class="fa fa-plus"></i> Ajouter </button>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {% comment %} Section Services disponible {% endcomment %}
+                 
+              </div>
+              <div class="tab-pane" id="contentsharing">
+                {% include 'services/contentsharing/contentsharing_parametre.html' %}
+              </div>
+            </div>
+          </div>
+    </div>
+</section>
+{% endblock %}
