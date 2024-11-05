@@ -24,6 +24,7 @@ class EvenementCreateView(CreateView):
 
 
 class DashboardView(DetailView):
+    """ doc """
     model = Evenement
     template_name = 'Event/dashboard.html'
     context_object_name = 'evenement'

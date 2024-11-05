@@ -24,6 +24,9 @@ class ContenuGalerie(models.Model):
 
     def __str__(self):
         return f"{self.get_type_contenu_display()} pour {self.evenement.titre}"
+    
+    def save(self, *args, **kwargs):
+        super.save(*args, **kwargs)
 
     class Meta:
         verbose_name = "Contenu de galerie"

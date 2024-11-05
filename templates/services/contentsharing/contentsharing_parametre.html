@@ -3,17 +3,15 @@
         <div class="row">
             <div class="col-sm-3 col-sm-offset-1">
                 <p>Événement: {{ evenement.titre }}</p>
-                <p>Nombre de contenus importés: {{ evenement.code_qr.count }}</p>
+                <p>Nombre de contenus importés: {{ evenement.contenus.count|default_if_none:"0"  }}</p>
                 <img width="200" height="200" src="{{ MEDIA_URL }}{{ evenement.code_qr.img.url }}" alt="QR Code">
                 <br>
-                {% if evenement.code_qr.img %}
+                {% if evenement.code_qr.img is None %}
                     <a href="{% url 'generer_code_qr' evenement.numero_uuid %}" class="btn btn-g btn-round btn-sm"><i class="fa fa-eye"></i>  afficher le codeQR</a>
                 {% else %}
-                    <a href="{% url 'generer_code_qr' evenement.numero_uuid %}" class="btn btn-g btn-round btn-sm"><i class="fa fa-qrcode"></i>  généré le codeQR</a>
+                    <a href="{% url 'galerie_evenement' evenement.numero_uuid %}" class="btn btn-g btn-round btn-sm"><i class="fa fa-qrcode"></i>  Explorer </a>
                 {% endif %}
-            </div>
-            <div class="col-sm-4 ">
-                <a class="btn btn-b btn-round" href={% url "galerie_evenement" evenement.numero_uuid %}>explorer</button>
             </div>
         </div>
     </div>
+    

@@ -24,7 +24,8 @@ class Evenement(models.Model):
     numero_uuid = models.UUIDField(unique=True, editable=False, default=uuid.uuid4, blank=True)
 
     def __str__(self):
-        return self.titre 
+        return str(self.titre) 
+    
 
     class Meta:
         verbose_name = "Événement"
