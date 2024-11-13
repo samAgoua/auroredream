@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import CreateView, TemplateView, DetailView
 from .models import Evenement
-
+from ModulesManager.models import Modules
 # Create your views here.
 
 class EvenementCreateView(CreateView):
@@ -33,5 +33,6 @@ class DashboardView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titre_page'] = "Dashboard"
+        context['modules'] = Modules.objects.all()
         return context
 

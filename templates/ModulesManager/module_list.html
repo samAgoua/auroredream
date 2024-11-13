@@ -1,0 +1,18 @@
+{% load static %}
+
+<div class="row multi-columns-row">
+{% for module in modules %}
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="features-item">
+            <div class="features-icon"><span class="{{module.options.icon_class}}"></span></div>
+            <h3 class="features-title font-alt">{{module.nom}}</h3>
+            <p>{{module.description}}</p>
+            {% if module.user_has_module %}
+                <a href="" class="btn btn-d btn-round">Configurer</a>
+            {% else %}
+                <a href="{% url 'add_user_module' module.id %}" class="btn btn-border-d btn-round">Activer</a>
+            {% endif %} 
+        </div>
+    </div>
+{% endfor %}
+</div>

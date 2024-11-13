@@ -22,6 +22,7 @@ from .views import ProfileView
 from django.conf.urls.static import static
 from Event.urls import urlpatterns as event_urls
 from ContentSharing.urls import urlpatterns as contentsharing_urls
+from ModulesManager.urls import urlpatterns as modules_urls
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html')),
@@ -33,4 +34,5 @@ urlpatterns = [
     path("evenement/", include(event_urls)),
     path("contentsharing/", include(contentsharing_urls)),
     path("unicorn/", include("django_unicorn.urls")),
+    path("modules/", include(modules_urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

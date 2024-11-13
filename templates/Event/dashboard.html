@@ -14,7 +14,7 @@
     <div class="container">
         <div role="tabpanel">
             <ul class="nav nav-tabs font-alt" role="tablist">
-              <li class="active"><a href="#generale" data-toggle="tab" aria-expanded="true"><span class="icon-tools-2"></span>générale</a></li>
+              <li class="active"><a href="#generale" data-toggle="tab" aria-expanded="true"><span class="icon-tools-2"></span>modules</a></li>
               <li class=""><a href="#contentsharing" data-toggle="tab" aria-expanded="false"><span class="icon-tools-2"></span>paratage de contenu</a></li>
             </ul>
             <div class="tab-content">
@@ -30,35 +30,11 @@
                         </div>
                       </div>
                       <div class="row multi-columns-row">
-                        
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                          <div class="features-item">
-                            <div class="features-icon"><span class="icon-tools"></span></div>
-                            <h3 class="features-title font-alt">Designs &amp; interfaces</h3>
-                            <p>Careful attention to detail and clean, well structured code ensures a smooth.</p>
-                            <button class="btn btn-d btn-circle" type="submit"><i class="fa fa-check"></i> ajouté</button>
-                        </div>
-                        </div>
-                       
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                          <div class="features-item">
-                            <div class="features-icon"><span class="icon-mobile"></span></div>
-                            <h3 class="features-title font-alt">Partage de contenu</h3>
-                            <p>Partagez des images et videos avec vos amis et votre famille, vos collègues et vos clients</p>
-                            <button class="btn btn-border-d btn-circle" type="submit"><i class="fa fa-plus"></i> Ajouter </button>
-                          </div>
-                        </div>
-
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                          <div class="features-item">
-                            <div class="features-icon"><span class="icon-lifesaver"></span></div>
-                            <h3 class="features-title font-alt">Boutique</h3>
-                            <p>Vous pouvez acheter des accesoires dans notre boutique en ligne</p>
-                            <button class="btn btn-border-d btn-circle" type="submit"><i class="fa fa-plus"></i> Ajouter </button>
-                        </div>
-                        </div>
+                        {% include 'ModulesManager/module_list.html' with modules=modules %}
                       </div>
                     </div>
+
+                    
 
                     {% comment %} Section Services disponible {% endcomment %}
                  
