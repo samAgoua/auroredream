@@ -1,4 +1,6 @@
 {% extends 'layout/base.html' %}
+{% load unicorn %}
+{% csrf_token %}
 
 {% block content %}
 <section class="module bg-dark-60" data-background="{{MEDIA_URL}}{{ evenement.cover.url }}">
@@ -30,7 +32,7 @@
                         </div>
                       </div>
                       <div class="row multi-columns-row">
-                        {% include 'ModulesManager/module_list.html' with modules=modules %}
+                        {% unicorn 'module_card' event=evenement %}
                       </div>
                     </div>
 

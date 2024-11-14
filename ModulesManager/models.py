@@ -2,6 +2,7 @@ from typing import Collection
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
+from Event.models import Evenement
 
 
 class Modules(models.Model):
@@ -11,6 +12,7 @@ class Modules(models.Model):
     prix = models.IntegerField(default=0)
     isEnabled = models.BooleanField(default=True)
     options = models.JSONField(default=None, blank=True, null=True)
+    configurable = models.BooleanField(default=False)
 
     def __str__(self):
         return self.nom
@@ -19,6 +21,10 @@ class Modules(models.Model):
     def user_has_module(self):
         user = get_user_model().objects.get(username='admin')
         return UserModule.objects.filter(user_id=user.pk, module=self).exists()
+    
+    def event_has_module(self, event_id) -> bool:
+        event = Evenement.objects.get(id=event_id)
+        return EventModule.objects.filter(event=event, module=self).exists()
 
 
 class UserModule(models.Model):
@@ -34,15 +40,15 @@ class UserModule(models.Model):
     options = models.JSONField(default=None, blank=True, null=True)
     cout = models.IntegerField(null=True, blank=True)
 
-    class Meta:     
-        unique_together = [['user', 'module']]
-
 class EventModule(models.Model):
     event = models.ForeignKey('Event.Evenement', on_delete=models.CASCADE)
     module = models.ForeignKey(Modules, on_delete=models.CASCADE)
     options = models.JSONField(default=None, blank=True, null=True)
     cout = models.IntegerField(null=True, blank=True)
 
+    def __str__(self):
+        return f"{self.event} - {self.module}"
     class Meta:
         unique_together = [['event', 'module']]
+    
 

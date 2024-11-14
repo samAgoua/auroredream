@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import UserModule, Modules
+from .models import UserModule, Modules, EventModule
 
 # Register your models here.
 
@@ -13,3 +13,7 @@ class UserModuleAdmin(admin.ModelAdmin):
     list_display = ('user', 'module', 'options','statut')
     list_filter = ('user__username',)
     search_fields = ('user__username', 'module__nom')
+
+@admin.register(EventModule)
+class EventModuleAdmin(admin.ModelAdmin):
+    pass
